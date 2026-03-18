@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>CV Reda Ouaradane - Version Officielle PDF</title>
+    <script src="cv-data.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @page { size: A4; margin: 0; }
+        :root { --prussian-blue: #0B2B53; --teal-custom: #049A9E; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; width: 210mm; height: 297mm; margin: 0; padding: 0; background: white; color: #1E293B; -webkit-print-color-adjust: exact; }
+        .a4-container { width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; }
+        header { background-color: white; padding: 30px 40px; border-bottom: 5px solid var(--prussian-blue); display: flex; align-items: center; gap: 30px; }
+        .profile-img { width: 140px; height: 140px; border-radius: 24px; object-fit: cover; border: 4px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .cv-body { display: grid; grid-template-columns: 75mm 1fr; flex-grow: 1; }
+        aside { background-color: #F8FAFC; padding: 30px; border-right: 1px solid #E2E8F0; }
+        main { padding: 40px; background: white; }
+        .section-title { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: var(--teal-custom); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+        .experience-item { margin-bottom: 25px; padding-left: 20px; border-left: 2px solid #F1F5F9; position: relative; }
+        .experience-item::before { content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; background: var(--prussian-blue); border-radius: 50%; }
+        .service-card { background: white; padding: 12px; border-radius: 12px; border: 1px solid #E2E8F0; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="a4-container">
+        <header>
+            <img src="photo.jpeg" alt="Reda Ouaradane" class="profile-img">
+            <div>
+                <h1 id="pdf-name" style="font-size: 38px; font-weight: 800; color: var(--prussian-blue); line-height: 1;"></h1>
+                <h2 id="pdf-title" style="font-size: 18px; font-weight: 600; color: var(--teal-custom); margin-top: 10px;"></h2>
+                <div id="pdf-contact" style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px; font-size: 11px; font-weight: 500; color: #64748B;"></div>
+            </div>
+        </header>
+
+        <div class="cv-body">
+            <aside>
+                <div class="section-title"><i data-lucide="star" style="width: 14px;"></i> Services Experts</div>
+                <div id="pdf-services"></div>
+                <div class="section-title" style="margin-top: 40px;"><i data-lucide="languages" style="width: 14px;"></i> Langues</div>
+                <div id="pdf-languages"></div>
+                <div class="section-title" style="margin-top: 40px;"><i data-lucide="award" style="width: 14px;"></i> Expertise</div>
+                <div id="pdf-soft-skills" style="display: flex; flex-wrap: wrap; gap: 5px;"></div>
+            </aside>
+
+            <main>
+                <div style="padding: 20px; background: #F8FAFC; border-radius: 15px; margin-bottom: 30px; border-left: 4px solid var(--teal-custom);">
+                    <p id="pdf-pitch" style="font-size: 13px; font-style: italic; color: #475569; line-height: 1.6;"></p>
+                </div>
+                <div class="section-title"><i data-lucide="briefcase" style="width: 14px;"></i> Expériences Professionnelles</div>
+                <div id="pdf-experiences"></div>
+                <div class="section-title" style="margin-top: 30px;"><i data-lucide="graduation-cap" style="width: 14px;"></i> Formations</div>
+                <div id="pdf-formations" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;"></div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        function renderPDF() {
+            const d = CV_DATA;
+            document.getElementById('pdf-name').textContent = d.personal.name;
+            document.getElementById('pdf-title').textContent = d.personal.title;
+            document.getElementById('pdf-pitch').textContent = d.personal.pitch;
+
+            document.getElementById('pdf-contact').innerHTML = `
+                <span style="display: flex; align-items: center; gap: 4px;"><i data-lucide="mail" style="width: 12px; color: var(--prussian-blue);"></i> ${d.personal.email}</span>
+                <span style="display: flex; align-items: center; gap: 4px;"><i data-lucide="phone" style="width: 12px; color: var(--prussian-blue);"></i> ${d.personal.phone}</span>
+                <span style="display: flex; align-items: center; gap: 4px;"><i data-lucide="map-pin" style="width: 12px; color: var(--prussian-blue);"></i> ${d.personal.location}</span>
+            `;
+
+            document.getElementById('pdf-services').innerHTML = d.services.map(s => `
+                <div class="service-card">
+                    <div style="font-size: 12px; font-weight: 800; color: var(--prussian-blue);">${s.title}</div>
+                    <div style="font-size: 10px; color: #94A3B8; text-transform: uppercase; font-weight: 700;">${s.detail}</div>
+                </div>
+            `).join('');
+
+            document.getElementById('pdf-languages').innerHTML = d.languages.map(l => `
+                <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; margin-bottom: 8px;">
+                    <span>${l.name}</span> <span style="color: var(--teal-custom);">${l.level}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('pdf-soft-skills').innerHTML = d.skills.soft.map(s => `
+                <span style="background: white; padding: 4px 8px; border-radius: 6px; border: 1px solid #E2E8F0; font-size: 10px; font-weight: 700;">${s}</span>
+            `).join('');
+
+            const exps = [...d.experiences.coordination, ...d.experiences.management.map(m => ({ ...m, company: "" }))];
+            document.getElementById('pdf-experiences').innerHTML = d.experiences.coordination.map(e => `
+                <div class="experience-item">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <h4 style="font-size: 14px; font-weight: 800; color: var(--prussian-blue);">${e.title}</h4>
+                        <span style="font-size: 10px; font-weight: 800; color: var(--teal-custom);">${e.date}</span>
+                    </div>
+                    <div style="font-size: 11px; font-weight: 700; color: #94A3B8; margin-bottom: 8px;">${e.company}</div>
+                    <ul style="font-size: 11px; color: #475569; list-style-type: disc; padding-left: 15px;">
+                        ${e.tasks.map(t => `<li>${t}</li>`).join('')}
+                    </ul>
+                </div>
+            `).join('') + d.experiences.management.map(e => `
+                <div class="experience-item">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <h4 style="font-size: 14px; font-weight: 800; color: var(--prussian-blue);">${e.title}</h4>
+                        <span style="font-size: 10px; font-weight: 800; color: #94A3B8;">${e.date}</span>
+                    </div>
+                    <p style="font-size: 11px; color: #475569;">${e.description}</p>
+                </div>
+            `).join('');
+
+            document.getElementById('pdf-formations').innerHTML = d.formations.map(f => `
+                <div>
+                    <div style="font-size: 12px; font-weight: 800; color: var(--prussian-blue);">${f.title}</div>
+                    <div style="font-size: 10px; color: #94A3B8;">${f.institution} | ${f.date}</div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+        window.onload = renderPDF;
+    </script>
+</body>
+</html>

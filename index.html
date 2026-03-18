@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reda Ouaradane - CV Premium</title>
+    <!-- Chargement des données -->
+    <script src="cv-data.js"></script>
+    <!-- Tailwind CSS & Google Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root { --prussian-blue: #0B2B53; --teal-custom: #049A9E; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAFC; color: #1E293B; }
+        .tab-content { display: none; animation: fadeIn 0.4s ease-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-gradient { background: linear-gradient(135deg, var(--prussian-blue), var(--teal-custom)); }
+        .tab-btn.active { background: linear-gradient(135deg, var(--prussian-blue), var(--teal-custom)); color: white; }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div id="web-version" class="max-w-6xl mx-auto">
+        <!-- Barre d'outils -->
+        <div class="flex justify-end gap-3 mb-6">
+            <a href="CV_Reda_Ouaradane.pdf" target="_blank" class="flex items-center gap-2 bg-white px-4 py-2 rounded-xl shadow-sm border border-slate-200 hover:bg-slate-50 transition-all font-semibold">
+                <i data-lucide="download" class="w-4 h-4"></i> Télécharger PDF
+            </a>
+            <a id="lnk-linkedin-top" href="#" target="_blank" class="flex items-center gap-2 btn-gradient text-white px-4 py-2 rounded-xl shadow-md font-semibold">
+                <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+            </a>
+        </div>
+
+        <!-- HEADER -->
+        <header class="bg-white rounded-[32px] p-8 shadow-xl shadow-slate-200/50 mb-8 border border-slate-100 relative overflow-hidden">
+            <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+                <div class="relative shrink-0">
+                    <img src="photo.jpeg" alt="Reda Ouaradane" class="w-32 h-32 md:w-40 md:h-40 rounded-3xl object-cover border-4 border-white shadow-lg">
+                </div>
+                <div class="text-center md:text-left flex-1">
+                    <h1 id="txt-name" class="text-3xl md:text-5xl font-extrabold text-[#0B2B53] mb-2 tracking-tight"></h1>
+                    <h2 id="txt-title" class="text-xl md:text-2xl font-semibold text-[#049A9E] mb-4"></h2>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-6 text-sm font-medium text-slate-500">
+                        <span class="flex items-center gap-1.5"><i data-lucide="mail" class="w-4 h-4 text-[#0B2B53]"></i> <span id="txt-email"></span></span>
+                        <span class="flex items-center gap-1.5"><i data-lucide="phone" class="w-4 h-4 text-[#0B2B53]"></i> <span id="txt-phone"></span></span>
+                        <a id="lnk-linkedin" href="#" target="_blank" class="flex items-center gap-1.5 hover:text-[#0B2B53] transition-colors"><i data-lucide="linkedin" class="w-4 h-4 text-[#0B2B53]"></i> LinkedIn</a>
+                        <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-4 h-4 text-[#0B2B53]"></i> <span id="txt-location"></span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 p-6 bg-slate-50 rounded-2xl border-l-4 border-[#049A9E]">
+                <p id="txt-pitch" class="text-slate-700 italic leading-relaxed text-lg"></p>
+            </div>
+        </header>
+
+        <div class="flex flex-col md:flex-row gap-8">
+            <!-- SIDEBAR -->
+            <aside class="w-full md:w-1/3 space-y-8">
+                <section class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                    <h3 class="text-xs font-black uppercase tracking-[0.2em] text-[#049A9E] mb-6 flex items-center gap-2"><i data-lucide="star" class="w-4 h-4"></i> Services Proposés</h3>
+                    <div id="container-services" class="space-y-4"></div>
+                </section>
+                <section class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                    <h3 class="text-xs font-black uppercase tracking-[0.2em] text-[#049A9E] mb-6 flex items-center gap-2"><i data-lucide="languages" class="w-4 h-4"></i> Langues</h3>
+                    <div id="container-languages" class="space-y-3"></div>
+                </section>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main class="w-full md:w-2/3 space-y-8">
+                <nav class="flex gap-2 p-1.5 bg-white rounded-2xl shadow-sm border border-slate-200">
+                    <button onclick="openTab(event, 'experiences')" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 active" id="defaultOpen"><i data-lucide="briefcase" class="w-4 h-4"></i> Expériences</button>
+                    <button onclick="openTab(event, 'competences')" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-slate-500 hover:bg-slate-50"><i data-lucide="layers" class="w-4 h-4"></i> Compétences</button>
+                    <button onclick="openTab(event, 'formations')" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-slate-500 hover:bg-slate-50"><i data-lucide="graduation-cap" class="w-4 h-4"></i> Formations</button>
+                </nav>
+
+                <div class="bg-white rounded-[32px] p-8 shadow-sm border border-slate-100 min-h-[500px]">
+                    <div id="experiences" class="tab-content active">
+                        <div id="container-exp-coord" class="space-y-8"></div>
+                        <div id="container-exp-mgmt" class="mt-8 space-y-4"></div>
+                    </div>
+                    <div id="competences" class="tab-content">
+                        <div id="container-skills-tech" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+                    </div>
+                    <div id="formations" class="tab-content">
+                        <div id="container-formations" class="space-y-4"></div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        function renderCV() {
+            const d = CV_DATA;
+            // Header
+            document.getElementById('txt-name').textContent = d.personal.name;
+            document.getElementById('txt-title').textContent = d.personal.title;
+            document.getElementById('txt-email').textContent = d.personal.email;
+            document.getElementById('txt-phone').textContent = d.personal.phone;
+            document.getElementById('txt-location').textContent = d.personal.location;
+            document.getElementById('txt-pitch').innerHTML = `<strong>Mon profil en bref :</strong> ${d.personal.pitch}`;
+            document.getElementById('lnk-linkedin').href = d.personal.linkedin;
+            document.getElementById('lnk-linkedin-top').href = d.personal.linkedin;
+
+            // Services
+            const srvCont = document.getElementById('container-services');
+            srvCont.innerHTML = d.services.map(s => `
+                <div class="p-4 bg-slate-50 rounded-2xl border-l-4 border-[#0B2B53]">
+                    <h4 class="font-bold text-[#0B2B53] text-sm">${s.title}</h4>
+                    <p class="text-[11px] text-slate-500 mt-1 uppercase font-bold tracking-tighter">${s.detail}</p>
+                </div>
+            `).join('');
+
+            // Langues
+            const langCont = document.getElementById('container-languages');
+            langCont.innerHTML = d.languages.map(l => `
+                <div class="flex justify-between items-center text-sm font-bold p-3 bg-slate-50 rounded-xl">
+                    <span>${l.name}</span><span class="text-[#049A9E] text-xs">${l.level}</span>
+                </div>
+            `).join('');
+
+            // Expériences Coordination
+            const expCoord = document.getElementById('container-exp-coord');
+            expCoord.innerHTML = `<h3 class="text-lg font-extrabold text-[#0B2B53] border-b-2 border-slate-100 pb-2 mb-4 flex items-center gap-2"><i data-lucide="layout" class="w-5 h-5 text-[#049A9E]"></i> Coordination & Aménagement</h3>
+                <div class="relative pl-8 border-l-2 border-slate-100 space-y-6">
+                    ${d.experiences.coordination.map(e => `
+                        <div>
+                            <div class="absolute -left-[9px] w-4 h-4 bg-[#0B2B53] rounded-full border-4 border-white"></div>
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="font-bold text-[#0B2B53]">${e.title} | ${e.company}</h4>
+                                <span class="text-[10px] font-black px-2 py-1 bg-teal-50 text-[#049A9E] rounded-full">${e.date}</span>
+                            </div>
+                            <ul class="text-sm text-slate-600 list-disc list-inside space-y-1">
+                                ${e.tasks.map(t => `<li>${t}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `).join('')}
+                </div>`;
+
+            // Expériences Management
+            const expMgmt = document.getElementById('container-exp-mgmt');
+            expMgmt.innerHTML = `<h3 class="text-lg font-extrabold text-[#0B2B53] border-b-2 border-slate-100 pb-2 mb-4 mt-8 flex items-center gap-2"><i data-lucide="trending-up" class="w-5 h-5 text-[#049A9E]"></i> Gestion Opérationnelle</h3>
+                <div class="space-y-4">
+                    ${d.experiences.management.map(e => `
+                        <div class="p-4 bg-slate-50 rounded-2xl">
+                            <h4 class="font-bold text-[#0B2B53]">${e.title} <span class="text-slate-400 font-medium">(${e.date})</span></h4>
+                            <p class="text-sm text-slate-600">${e.description}</p>
+                        </div>
+                    `).join('')}
+                </div>`;
+
+            // Compétences
+            const skillTech = document.getElementById('container-skills-tech');
+            skillTech.innerHTML = `
+                <div class="space-y-6">
+                    <h4 class="font-bold text-[#0B2B53] uppercase text-xs tracking-widest mb-4">Techniques & Logicielles</h4>
+                    <div class="space-y-4">
+                        ${d.skills.technical.map(s => `
+                            <div>
+                                <div class="flex justify-between text-[10px] font-black mb-1 uppercase tracking-tighter"><span>${s.name}</span><span>${s.level}%</span></div>
+                                <div class="w-full bg-slate-100 h-1.5 rounded-full"><div class="bg-[#0B2B53] h-full" style="width: ${s.level}%"></div></div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl">
+                    <h4 class="font-bold text-[#0B2B53] uppercase text-xs tracking-widest mb-4">Soft Skills</h4>
+                    <div class="flex flex-wrap gap-2">
+                        ${d.skills.soft.map(s => `<span class="px-3 py-1.5 bg-white rounded-lg text-xs font-bold shadow-sm">${s}</span>`).join('')}
+                    </div>
+                </div>`;
+
+            // Formations
+            const formCont = document.getElementById('container-formations');
+            formCont.innerHTML = d.formations.map(f => `
+                <div class="p-6 border border-slate-100 rounded-2xl flex gap-6 items-center">
+                    <div class="text-[#049A9E] font-black text-xl w-16 shrink-0 text-center">${f.date}</div>
+                    <div>
+                        <h4 class="font-bold text-[#0B2B53]">${f.title}</h4>
+                        <p class="text-sm text-slate-500 italic">${f.institution}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) { tabcontent[i].classList.remove("active"); }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); tablinks[i].classList.add("text-slate-500", "hover:bg-slate-50"); }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            evt.currentTarget.classList.remove("text-slate-500", "hover:bg-slate-50");
+        }
+
+        window.onload = renderCV;
+    </script>
+</body>
+</html>
