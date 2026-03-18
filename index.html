@@ -82,30 +82,30 @@
         </div>
 
         <!-- HEADER -->
-        <header class="bg-white rounded-[32px] p-8 shadow-xl shadow-slate-200/50 mb-8 border border-slate-100 relative overflow-hidden">
-            <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+        <header class="bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-8 shadow-xl shadow-slate-200/50 mb-8 border border-slate-100 relative overflow-hidden">
+            <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8 relative z-10">
                 <div class="relative shrink-0">
-                    <img src="photo.jpeg" alt="Reda Ouaradane" class="w-32 h-32 md:w-40 md:h-40 rounded-3xl object-cover border-4 border-white shadow-lg">
+                    <img src="photo.jpeg" alt="Reda Ouaradane" class="w-28 h-28 md:w-40 md:h-40 rounded-2xl md:rounded-3xl object-cover border-4 border-white shadow-lg">
                 </div>
                 <div class="text-center md:text-left flex-1">
-                    <h1 id="txt-name" class="text-3xl md:text-5xl font-extrabold text-[#0B2B53] mb-2 tracking-tight"></h1>
-                    <h2 id="txt-title" class="text-xl md:text-2xl font-semibold text-[#049A9E] mb-4"></h2>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-6 text-sm font-medium text-slate-500">
-                        <span class="flex items-center gap-1.5"><i data-lucide="mail" class="w-4 h-4 text-[#0B2B53]"></i> <span id="txt-email"></span></span>
-                        <span class="flex items-center gap-1.5"><i data-lucide="phone" class="w-4 h-4 text-[#0B2B53]"></i> <span id="txt-phone"></span></span>
+                    <h1 id="txt-name" class="text-2xl md:text-5xl font-extrabold text-[#0B2B53] mb-2 tracking-tight"></h1>
+                    <h2 id="txt-title" class="text-lg md:text-2xl font-semibold text-[#049A9E] mb-4"></h2>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6 text-sm font-medium text-slate-500">
+                        <span class="flex items-center gap-1.5 whitespace-nowrap"><i data-lucide="mail" class="w-4 h-4 text-[#0B2B53]"></i> <span id="txt-email"></span></span>
+                        <span class="flex items-center gap-1.5 whitespace-nowrap"><i data-lucide="phone" class="w-4 h-4 text-[#0B2B53]"></i> <span id="txt-phone"></span></span>
                         <a id="lnk-linkedin" href="#" target="_blank" class="flex items-center gap-1.5 hover:text-[#0B2B53] transition-colors"><i data-lucide="linkedin" class="w-4 h-4 text-[#0B2B53]"></i> LinkedIn</a>
                         <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-4 h-4 text-[#0B2B53]"></i> <span id="txt-location"></span></span>
                     </div>
                 </div>
             </div>
-            <div class="mt-8 p-6 bg-slate-50 rounded-2xl border-l-4 border-[#049A9E]">
-                <p id="txt-pitch" class="text-slate-700 italic leading-relaxed text-lg"></p>
+            <div class="mt-6 md:mt-8 p-4 md:p-6 bg-slate-50 rounded-2xl border-l-4 border-[#049A9E]">
+                <p id="txt-pitch" class="text-slate-700 italic leading-relaxed text-base md:text-lg"></p>
             </div>
         </header>
 
         <div class="flex flex-col md:flex-row gap-8">
             <!-- SIDEBAR -->
-            <aside class="w-full md:w-1/3 space-y-8">
+            <aside class="w-full md:w-1/3 order-2 md:order-1 space-y-8">
                 <section class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
                     <h3 class="text-xs font-black uppercase tracking-[0.2em] text-[#049A9E] mb-6 flex items-center gap-2"><i data-lucide="star" class="w-4 h-4"></i> Services Proposés</h3>
                     <div id="container-services" class="space-y-4"></div>
@@ -117,14 +117,14 @@
             </aside>
 
             <!-- MAIN CONTENT -->
-            <main class="w-full md:w-2/3 space-y-8">
-                <nav class="flex gap-2 p-1.5 bg-white rounded-2xl shadow-sm border border-slate-200">
-                    <button onclick="openTab(event, 'experiences')" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 active" id="defaultOpen"><i data-lucide="briefcase" class="w-4 h-4"></i> Expériences</button>
-                    <button onclick="openTab(event, 'competences')" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-slate-500 hover:bg-slate-50"><i data-lucide="layers" class="w-4 h-4"></i> Compétences</button>
-                    <button onclick="openTab(event, 'formations')" class="tab-btn flex-1 py-3 px-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-slate-500 hover:bg-slate-50"><i data-lucide="graduation-cap" class="w-4 h-4"></i> Formations</button>
+            <main class="w-full md:w-2/3 order-1 md:order-2 space-y-6 md:space-y-8">
+                <nav class="flex gap-1 p-1 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-x-auto no-scrollbar">
+                    <button onclick="openTab(event, 'experiences')" class="tab-btn flex-1 py-2.5 md:py-3 px-3 md:px-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 active whitespace-nowrap text-xs md:text-sm" id="defaultOpen"><i data-lucide="briefcase" class="w-4 h-4"></i> Expériences</button>
+                    <button onclick="openTab(event, 'competences')" class="tab-btn flex-1 py-2.5 md:py-3 px-3 md:px-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-slate-500 hover:bg-slate-50 whitespace-nowrap text-xs md:text-sm"><i data-lucide="layers" class="w-4 h-4"></i> Compétences</button>
+                    <button onclick="openTab(event, 'formations')" class="tab-btn flex-1 py-2.5 md:py-3 px-3 md:px-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-slate-500 hover:bg-slate-50 whitespace-nowrap text-xs md:text-sm"><i data-lucide="graduation-cap" class="w-4 h-4"></i> Formations</button>
                 </nav>
 
-                <div class="bg-white rounded-[32px] p-8 shadow-sm border border-slate-100 min-h-[500px]">
+                <div class="bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-8 shadow-sm border border-slate-100 min-h-[400px]">
                     <div id="experiences" class="tab-content active">
                         <div id="container-exp-coord" class="space-y-8"></div>
                         <div id="container-exp-mgmt" class="mt-8 space-y-4"></div>
@@ -173,15 +173,15 @@
             // Expériences Coordination
             const expCoord = document.getElementById('container-exp-coord');
             expCoord.innerHTML = `<h3 class="text-lg font-extrabold text-[#0B2B53] border-b-2 border-slate-100 pb-2 mb-4 flex items-center gap-2"><i data-lucide="layout" class="w-5 h-5 text-[#049A9E]"></i> Coordination & Aménagement</h3>
-                <div class="relative pl-8 border-l-2 border-slate-100 space-y-6">
+                <div class="relative pl-6 md:pl-8 border-l-2 border-slate-100 space-y-8">
                     ${d.experiences.coordination.map(e => `
-                        <div>
-                            <div class="absolute -left-[9px] w-4 h-4 bg-[#0B2B53] rounded-full border-4 border-white"></div>
-                            <div class="flex justify-between items-start mb-1">
-                                <h4 class="font-bold text-[#0B2B53]">${e.title} | ${e.company}</h4>
-                                <span class="text-[10px] font-black px-2 py-1 bg-teal-50 text-[#049A9E] rounded-full">${e.date}</span>
+                        <div class="relative">
+                            <div class="absolute -left-[25px] md:-left-[33px] top-1.5 w-4 h-4 bg-[#0B2B53] rounded-full border-4 border-white"></div>
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
+                                <h4 class="font-bold text-[#0B2B53] leading-tight">${e.title} <span class="text-slate-400 font-medium md:inline block md:mt-0 mt-1">| ${e.company}</span></h4>
+                                <span class="inline-block self-start text-[10px] font-black px-2 py-1 bg-teal-50 text-[#049A9E] rounded-full whitespace-nowrap">${e.date}</span>
                             </div>
-                            <ul class="text-sm text-slate-600 list-disc list-inside space-y-1">
+                            <ul class="text-sm text-slate-600 list-disc list-inside space-y-1.5">
                                 ${e.tasks.map(t => `<li>${t}</li>`).join('')}
                             </ul>
                         </div>
