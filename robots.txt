@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://boom-digital-ma.github.io/cv-reda/sitemap.xml
